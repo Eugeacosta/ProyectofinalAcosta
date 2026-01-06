@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+<h2 class="my-4">Últimas Publicaciones</h2>
+
+<div class="row">
+    {% for post in posts %}
+    
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            {% if post.imagen %}
+            <img src="{{ post.imagen.url }}" class="card-img-top" alt="{{ post.titulo }}" style="height: 200px; object-fit: cover;">
+            {% endif %}
+            
+            <div class="card-body">
+                <h5 class="card-title">{{ post.titulo }}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">{{ post.subtitulo }}</h6>
+                <p class="card-text">
+                    <small class="text-muted">Publicado el: {{ post.fecha_publicacion }}</small>
+                </p>
+                <a href="{% url 'post_detail' post.id %}" class="btn btn-primary btn-sm">Leer más</a>
+            </div>
+        </div>
+    </div>
+
+    {% empty %}
+    <div class="alert alert-warning" role="alert">
+        No hay páginas aún.
+    </div>
+
+    {% endfor %}
+</div>
+
+{% endblock %}

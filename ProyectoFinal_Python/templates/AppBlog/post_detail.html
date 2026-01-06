@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+
+<article class="mb-5">
+    <h1 class="fw-bolder mb-1">{{ post.titulo }}</h1>
+    <h4 class="text-muted fst-italic mb-2">{{ post.subtitulo }}</h4>
+    
+    <div class="text-muted fst-italic mb-4">
+        Publicado el {{ post.fecha_publicacion }} por {{ post.autor }}
+    </div>
+
+    {% if post.imagen %}
+    <figure class="mb-4">
+        <img class="img-fluid rounded" src="{{ post.imagen.url }}" alt="Imagen del post" />
+    </figure>
+    {% endif %}
+
+    <section class="mb-5">
+        <div class="fs-5 mb-4">
+            {{ post.cuerpo|safe }}
+        </div>
+    </section>
+
+    <a href="{% url 'post_list' %}" class="btn btn-secondary">Volver al listado</a>
+</article>
+<hr>
+{% if user.is_authenticated %}
+    <a href="{% url 'post_update' post.pk %}" class="btn btn-warning">Editar</a>
+    <a href="{% url 'post_delete' post.pk %}" class="btn btn-danger">Borrar</a>
+{% endif %}
+
+{% endblock %}

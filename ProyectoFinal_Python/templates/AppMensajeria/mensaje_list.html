@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class="container mt-4">
+    <h2>📬 Mis Mensajes</h2>
+    <div class="mb-3 text-end">
+        <a href="{% url 'mensaje_create' %}" class="btn btn-primary">➕ Nuevo Mensaje</a>
+    </div>
+
+    <ul class="list-group">
+        {% for mensaje in mensajes %}
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <strong>De: {{ mensaje.emisor }}</strong> 
+                <span class="text-muted small">({{ mensaje.fecha_envio|date:"d/m/Y H:i" }})</span>
+                <br>
+                {{ mensaje.cuerpo|truncatechars:50 }} </div>
+            <a href="{% url 'mensaje_detail' mensaje.pk %}" class="btn btn-sm btn-outline-info">Leer</a>
+        </li>
+        {% empty %}
+        <li class="list-group-item text-center">No tienes mensajes nuevos.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

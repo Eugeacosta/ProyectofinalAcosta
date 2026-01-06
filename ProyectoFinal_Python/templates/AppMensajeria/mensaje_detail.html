@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block contenido %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-info text-white">
+            Mensaje de: <strong>{{ object.emisor }}</strong>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Para: Mí</h5>
+            <p class="card-text fs-5">{{ object.cuerpo }}</p>
+            <p class="text-muted text-end"><small>{{ object.fecha_envio }}</small></p>
+            <hr>
+            <a href="{% url 'mensaje_list' %}" class="btn btn-secondary">Volver al buzón</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
