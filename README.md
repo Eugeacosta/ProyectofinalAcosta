@@ -19,3 +19,6 @@ Este proyecto es una aplicación web desarrollada con Django que permite a los u
 
 ## Pruebas
 - Usuario Test: admin / Clave: 1234
+
+- Video mostrando la pagina y sus funcionalidades:
+- https://jumpshare.com/share/C7s8GTC60w5StTLeBwxw
